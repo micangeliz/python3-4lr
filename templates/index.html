@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Lab3</title>
+	<link type="text/css" href="{{ url_for('static', filename='index_style.css')}}" rel="stylesheet" />
+
+</head>
+
+<body>
+	{% if message %}
+        <p>{{ message }}<p>
+    {% endif %}
+	<form action="" method="POST">
+		<div class="container">
+			<h1>Решение квадратного уравнения</h1>
+			<p>Чтобы решить квадратное уравнения вида: ax<sup>2</sup>+bx+c=0, введите параметры a, b, c:</p>
+			<hr>
+
+			<label for="a"><b>Параметр a</b></label>
+			<input type="text" placeholder="Введите параметр a" name="a" required>
+
+			<label for="b"><b>Параметр b</b></label>
+			<input type="text" placeholder="Введите параметр b" name="b" required>
+
+			<label for="c"><b>Параметр c</b></label>
+			<input type="text" placeholder="Повторите параметр c" name="c" required>
+			<hr>
+			<button type="submit" class="solve_button">Решить</button>
+			<hr>
+			<h2>Ответы:</h2>
+
+			{% if message_no %}
+        	<p>{{ message_no }}<p>
+    		{% endif %}
+
+			{% if message_yes %}
+			<p>{{ message_yes }}<p>
+			<p> x<sub>1</sub> = {{ "%.2f" % x1 }}<p>
+			<p> x<sub>2</sub> = {{ "%.2f" % x2 }}<p>
+    		{% endif %}
+
+			{% if message_one %}
+			<p>{{ message_one }}<p>
+			<p> x = {{ "%.2f" % x }}<p>
+    		{% endif %}
+
+
+		</div>
+	</form>
+</body>
+
+</html>
